@@ -1,14 +1,18 @@
 # Menu chọn bài tập
+from importlib import import_module
+
 def menu():
     while True:
-        print('===Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng===')
-        print('1. Bài 1: In ra dãy số từ . . . đến . . . với bước số')
-        print('2. Bài 2: Tính tổng của các số chẵn/lẻ')
-        print('3. Bài 3: Kiểm tra chuỗi Palindrome')
-        print('4. Bài 4: Đếm số từ trong một câu được nhập')
-        print('5. Bài 5: Tính giai thừa')
-        print('6. Bài 6: Kiểm tra số nguyên tố')
-        print('7. Thoát')
+        print('=== Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng ===')
+        print('1. Mục 2 - Bài 1: In ra dãy số từ . . . đến . . . với bước số')
+        print('2. Mục 2 - Bài 2: Tính tổng của các số chẵn/lẻ')
+        print('3. Mục 4 - Bài 3: Kiểm tra chuỗi Palindrome')
+        print('4. Mục 4 - Bài 4: Đếm số từ trong một câu được nhập')
+        print('5. Mục 5 - Bài 5: Tính giai thừa')
+        print('6. Mục 5 - Bài 6: Kiểm tra số nguyên tố')
+        print('7. Mục 1, 6 - Bài 7: Thử try . . . catch . . . raise')
+        print('8. Mục 3 - Bài 8: Quản lý học viên')
+        print('87. Thoát')
         choice = int(input('Mời chọn: '))
 
         if choice == 1:
@@ -24,8 +28,12 @@ def menu():
         elif choice == 6:
             bai_6()
         elif choice == 7:
-            print('Thoát chương trình!\n')
-            break
+            bai_7()
+        elif choice == 8:
+            import quan_ly_hoc_vien
+            quan_ly_hoc_vien.main()
+        elif choice == 87:
+            exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
@@ -50,10 +58,10 @@ def in_ra_man_hinh(n,i,step):
 def bai_2():
     number = int(input('Nhập số cuối: '))
     start_num = int(input('Nhập số đầu: '))
-    type = input('Nhập chữ "chan" hoặc "le": ')
+    type = input('Bạn muốn tính tổng các số chẵn hay lẻ. Nhập chữ "chan" hoặc "le": ')
 
     tong, so_hang = tinh_tong(number, start_num, type)
-    print(f'{so_hang} = {tong}')
+    print(f'{so_hang[3:]} = {tong}')
 
 # Tính tổng các phần tử trong dãy số
 def tinh_tong(n,i,type):
@@ -63,16 +71,18 @@ def tinh_tong(n,i,type):
         if type == 'chan':
             if i % 2 == 0:
                 tong = tong + i
-                print(f'{i} +', end=' ')
-            i += 1
+                phep_tinh = phep_tinh + ' + ' + str(i)
+            # i += 1
         elif type == 'le':
             if i % 2 > 0:
                 tong = tong + i
                 phep_tinh = phep_tinh + ' + ' + str(i)
-            i += 1
+            # i += 1
         else:
             print('Kiểu số không hợp lệ!')
             break
+
+        i += 1
 
     return list((tong, phep_tinh))
 
@@ -89,8 +99,7 @@ def bai_3():
 
 # kiểm tra chuỗi palindrome
 def is_palindrome(s):
-    # Loại bỏ khoảng trắng và chuyển đổi thành chữ thường
-    s = s.replace(" ", "").lower()
+    s = s.replace(" ", "").upper()
     # So sánh chuỗi với chuỗi đảo ngược của nó
     return s == s[::-1]
 
@@ -142,6 +151,35 @@ def so_nguyen_to(n):
         print(f'{n} không phải số nguyên tố\n')
     else:
         print(f'{n} là số nguyên tố\n')
+
+"""Bài 7"""
+def bai_7():
+    num1 = input('Nhập số thứ nhất: ')
+    num2 = input('Nhập số thứ hai: ')
+
+    try:
+        num1 = int(num1)
+        num2 = int(num2)
+    except ValueError:
+        if not num1.isdigit():
+            print(f'Số {num1} không phải số nguyên')
+        elif not num2.isdigit():
+            print(f'{num2} không phải số nguyên')
+        return
+
+    calculation(num1, num2)
+
+# Các phép tính cơ bản
+def calculation(a, b):
+    print('- Các phép tính cơ bản là:')
+    print(f"Cộng: {a} + {b} = {a + b}")
+    print(f"Trừ: {a} - {b} = {a - b}")
+    print(f"Nhân: {a} * {b} = {a * b}")
+
+    try:
+        print(f"Chia: {a} / {b} = {a / b}\n")
+    except ZeroDivisionError:
+        print('Không chia được cho 0\n')
 
 # Chạy chương trình
 menu()
