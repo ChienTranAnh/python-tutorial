@@ -1,6 +1,4 @@
 # Menu chọn bài tập
-from importlib import import_module
-
 def menu():
     while True:
         print('=== Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng ===')
