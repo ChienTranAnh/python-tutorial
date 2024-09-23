@@ -1,3 +1,5 @@
+import sys
+
 # Menu chọn bài tập
 def menu():
     while True:
@@ -31,7 +33,7 @@ def menu():
             import quan_ly_hoc_vien
             quan_ly_hoc_vien.main()
         elif choice == 87:
-            exit('Thoát chương trình!')
+            sys.exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()

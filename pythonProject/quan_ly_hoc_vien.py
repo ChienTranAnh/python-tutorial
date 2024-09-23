@@ -22,8 +22,8 @@ def menu():
         elif choice == '4':
             xoa_hoc_vien()
         elif choice == '5':
-            import baitap
-            baitap.main()
+            import buoi1
+            buoi1.main()
         else:
             print("Lựa chọn không hợp lệ. Vui lòng chọn lại.\n")
 

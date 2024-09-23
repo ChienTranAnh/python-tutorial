@@ -24,7 +24,8 @@ def menu():
             import quan_ly_hoc_vien
             quan_ly_hoc_vien.main()
         elif choice == 87:
-            exit('Thoát chương trình!')
+            print('Thoát chương trình')
+            break
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
