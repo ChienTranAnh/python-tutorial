@@ -1,6 +1,7 @@
 # Menu chọn bài tập
 def menu():
     while True:
+        print()
         print('=== Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng ===')
         print('1. Mục 2 - Bài 1: In ra dãy số từ . . . đến . . . với bước số')
         print('2. Mục 2 - Bài 2: Tính tổng của các số chẵn/lẻ')

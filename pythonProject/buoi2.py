@@ -1,6 +1,7 @@
 # Menu chọn bài tập
 def menu():
     while True:
+        print()
         print('=== Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng ===')
         print('1. Mục 1 - Bài 1: In ra dãy số từ . . . đến . . . với bước số')
         print('2. Mục 2 - Bài 2: Dùng List Comprehension để tạo list số chẵn/lẻ')
@@ -17,15 +18,15 @@ def menu():
         elif choice == 3:
             bai_3()
         elif choice == 4:
-            bai_4()
+            import quan_ly_hoc_vien
+            quan_ly_hoc_vien.main()
         elif choice == 5:
             bai_5()
         elif choice == 8:
             import quan_ly_hoc_vien
             quan_ly_hoc_vien.main()
         elif choice == 87:
-            print('Thoát chương trình!')
-            break
+            exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
