@@ -3,6 +3,7 @@ import sys
 # Menu chọn bài tập
 def menu():
     while True:
+        print()
         print('=== Chọn bài tập bạn muốn xem bằng cách nhập số đầu mục tương ứng ===')
         print('1. Mục 2 - Bài 1: In ra dãy số từ . . . đến . . . với bước số')
         print('2. Mục 2 - Bài 2: Tính tổng của các số chẵn/lẻ')
@@ -30,13 +31,17 @@ def menu():
         elif choice == 7:
             bai_7()
         elif choice == 8:
-            import quan_ly_hoc_vien
-            quan_ly_hoc_vien.main()
+            hoc_vien()
         elif choice == 87:
             sys.exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
+
+# Gọi quan_ly_hoc_vien
+def hoc_vien():
+    import quan_ly_hoc_vien
+    quan_ly_hoc_vien.main()
 
 """Bài 1"""
 def bai_1():
