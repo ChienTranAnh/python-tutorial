@@ -56,10 +56,10 @@ def them_hoc_vien():
 
     if check > 0:
         print(f"Đã thêm học viên \'{ten}\' vào danh sách.\n")
-        hoc_vien_file.close()
     else:
         print(f"Có lỗi, không thêm được học viên \'{ten}\' vào danh sách.\n")
-        hoc_vien_file.close()
+
+    hoc_vien_file.close()
 
 # Chỉnh sửa thông tin học viên
 def sua_thong_tin_hoc_vien():
