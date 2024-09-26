@@ -20,22 +20,15 @@ def menu():
         elif choice == 3:
             bai_3()
         elif choice == 4:
-            hoc_vien()
-        elif choice == 5:
-            bai_5()
-        elif choice == 8:
             import quan_ly_hoc_vien
             quan_ly_hoc_vien.main()
+        elif choice == 5:
+            bai_5()
         elif choice == 87:
             sys.exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
-
-# Gọi quan_ly_hoc_vien
-def hoc_vien():
-    import quan_ly_hoc_vien
-    quan_ly_hoc_vien.main()
 
 """Bài 1"""
 def bai_1():

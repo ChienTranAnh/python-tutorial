@@ -1,5 +1,4 @@
-# Khởi tạo danh sách học viên (List các học viên là Dictionary)
-danh_sach_hoc_vien = []
+import sys
 
 # Menu lựa chọn
 def menu():
@@ -10,8 +9,7 @@ def menu():
         print("2. Hiển thị danh sách học viên")
         print("3. Sửa thông tin học viên")
         print("4. Xóa học viên")
-        print("5. Thoát - Về menu buoi1")
-        print("6. Thoát - Về menu buoi2")
+        print("5. Thoát")
 
         choice = input("Nhập lựa chọn của bạn: ")
 
@@ -24,11 +22,7 @@ def menu():
         elif choice == '4':
             xoa_hoc_vien()
         elif choice == '5':
-            import buoi1
-            buoi1.menu()
-        elif choice == '6':
-            import buoi2
-            buoi2.menu()
+            sys.exit('Thoát!')
         else:
             print("Lựa chọn không hợp lệ. Vui lòng chọn lại.\n")
 

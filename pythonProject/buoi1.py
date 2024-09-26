@@ -31,17 +31,13 @@ def menu():
         elif choice == 7:
             bai_7()
         elif choice == 8:
-            hoc_vien()
+            import quan_ly_hoc_vien
+            quan_ly_hoc_vien.main()
         elif choice == 87:
             sys.exit('Thoát chương trình!')
         else:
             print('Không hợp lệ, mời nhập lại!\n')
             menu()
-
-# Gọi quan_ly_hoc_vien
-def hoc_vien():
-    import quan_ly_hoc_vien
-    quan_ly_hoc_vien.main()
 
 """Bài 1"""
 def bai_1():
