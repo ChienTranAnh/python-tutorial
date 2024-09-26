@@ -1,4 +1,5 @@
 import sys
+import requests
 
 # Menu chọn bài tập
 def menu():
@@ -56,6 +57,24 @@ def bai_1():
 """Bài 2"""
 def bai_2():
     bai_1()
+
+"""Bài 3"""
+def bai_3():
+    print('Dùng vòng lặp -> Done')
+    print('Dùng Generator -> Chưa ra')
+
+"""Bài 5"""
+def bai_5():
+    url = 'https://www.24h.com.vn/tin-tuc-trong-ngay/bi-phan-anh-chan-xe-dot-ngot-de-do-nong-do-con-cong-an-tphcm-noi-gi-c46a1605914.html'
+    o = requests.get(url=url)
+
+    with open('text.txt', 'w', encoding='utf-8') as my_file:
+        check = my_file.write(o.text)
+
+    if check > 0:
+        print('Xuất data thành công!')
+    else:
+        print('Xuẩt data không thành công!')
 
 # Chạy chương trình
 menu()
