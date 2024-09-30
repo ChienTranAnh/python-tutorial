@@ -1,16 +1,30 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Optional
+from typing import Dict
 
 mpp = FastAPI()
 
-@mpp.get('/')
-def read_root(request: Request):
-    url = str(request.url)
-    header = request.headers
+class Address(BaseModel):
+    city: str
+    dictrict: str
+    yard: str
 
-    return {"url": url, "header": header}
+class User(BaseModel):
+    name: str
+    age: int
+    address: Address
+    email: Optional[str] = None
 
-@mpp.post('/m')
-async def create(request: Request):
-    data = await request.json()
+class UserResponse(BaseModel):
+    name: str
+    age: int
 
-    return {"data": data}
+@mpp.post('/users', response_model=UserResponse)
+async def create(user: User):
+    return user
+    # return {"message": f"User \'{user.name}\' created successfully!", "data": user}
+
+@mpp.post('/data')
+def process_data(data: Dict[str, int]):
+    return {"processed_data": {key: value * 2 for key, value in data.items()}}
