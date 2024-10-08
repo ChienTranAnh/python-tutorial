@@ -1,11 +1,11 @@
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
-from passlib.context import CryptContext
 
+from . import crypt_pass
 from ..models import Enterprise
 from ..schemas import enterprises as schemas
 
-crypt_pass = CryptContext(schemes=["bcrypt"], deprecated="auto")
+crypt_pass = crypt_pass()
 
 # đăng nhập
 def authenticate_enterprise(db: Session, email: EmailStr, password: str):

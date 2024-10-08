@@ -15,6 +15,7 @@ class Student(Base):
     phone = Column(String(10), comment='điện thoại liên hệ')
     classes = Column(String(150), nullable=True, comment='lớp')
     major = Column(String(150), nullable=True, comment='nghành học')
+    graduation_year = Column(Integer, comment='năm tốt nghiệp')
     university_id = Column(Integer, ForeignKey('universities.id'), comment="mã trường đại học")
     skill = Column(String(255), nullable=True, comment="kỹ năng")
 

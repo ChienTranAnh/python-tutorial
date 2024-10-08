@@ -1,9 +1,11 @@
-from datetime import datetime
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
+from . import format_date, crypt_pass
 from ..models import User
 from ..schemas import user as schemas
+
+crypt_pass = crypt_pass()
 
 # danh sách người dùng
 def get_users(db: Session, skip: int = 0, limit: int = 10):
@@ -11,13 +13,11 @@ def get_users(db: Session, skip: int = 0, limit: int = 10):
 
 # tạo mới người dùng
 def	create_user(db: Session, user: schemas.UserCreate):
-    birth_obj = datetime.strptime(user.birth, '%d/%m/%Y')
-    date_of_birth = datetime.strftime(birth_obj, '%Y-%m-%d')
     db_user = User(
         name=user.name,
-        birth=date_of_birth,
+        birth=format_date(user.birth),
         user_name=user.user_name,
-        password=user.password,
+        password=crypt_pass.hash(user.password),
         email=user.email,
         role=user.role,
         acc_type=user.acc_type

@@ -17,3 +17,4 @@ class Enterprise(Base):
     about = Column(String(255), nullable=True, comment='giới thiệu công ty')
 
     recruitment = relationship("Recruitment", back_populates="enterprise")
+    employee = relationship("Employee", back_populates="enterprise")
