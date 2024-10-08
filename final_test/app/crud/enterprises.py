@@ -69,8 +69,6 @@ def change_pass(db: Session, old_pass, new_pass, company_detail):
 def check_enterprise(db: Session, company_email: EmailStr):
     return db.query(Enterprise).filter(Enterprise.email == company_email).first()
 
-"""
 # danh sách doanh nghiệp
 def get_enterprises(db: Session, skip: int = 0, limit: int = 10):
     return db.query(Enterprise).offset(skip).limit(limit).all()
-"""

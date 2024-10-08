@@ -7,7 +7,14 @@ from ..schemas import enterprises as company_schema
 
 router = APIRouter()
 
-    # Tạo mới doanh nghiệp
+# danh sách daonh nghiệp
+@router.get('/enterprises/', response_model=list[company_schema.EnterprisesResponse])
+def read_enterprises(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    enterprises = crud_company.get_enterprises(db, skip=skip, limit=limit)
+
+    return enterprises
+
+# Tạo mới doanh nghiệp
 @router.post('/enterprises/', response_model=company_schema.EnterprisesResponse)
 def create_enterprise(enterprise: company_schema.EnterprisesCreate, db: Session = Depends(get_db)):
     db_enterprise = crud_company.check_enterprise(db, company_email=enterprise.email)
@@ -49,13 +56,6 @@ def change_password(enterprise_id: int, old_pass: str, new_pass: str, db: Sessio
 
     raise HTTPException(status_code=200, detail='Change password success')
 
-"""
-@router.get('/enterprises/', response_model=list[company_schema.EnterprisesResponse])
-def read_enterprises(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    # Lấy danh sách daonh nghiệp
-    enterprises = crud_company.get_enterprises(db, skip=skip, limit=limit)
-    return enterprises
-"""
 """
 @router.get('/enterprises/{enterprise_id}', response_model=company_schema.EnterprisesResponse)
 def enterprise_detail(enterprise_id: int, db: Session = Depends(get_db)):
