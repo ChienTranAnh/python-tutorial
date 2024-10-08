@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey
 from sqlalchemy.dialects.mysql import TINYINT
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 from ..db.database import Base
 
 class Student(Base):

@@ -4,7 +4,7 @@ from .db import database
 from .router import users
 from .router import enterprises
 
-app = FastAPI(title="Auto Career", version='1.0.0')
+app = FastAPI(title="Auto Career API", version='1.0.0')
 
 Base.metadata.create_all(bind=database.engine)
 
