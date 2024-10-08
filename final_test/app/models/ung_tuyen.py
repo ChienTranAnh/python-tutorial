@@ -3,7 +3,7 @@ from sqlalchemy.dialects.mysql import TINYINT
 from sqlalchemy.orm import relationship
 from ..db.database import Base
 
-class Ung_tuyen(Base):
+class Ungtuyen(Base):
     __tablename__ = "ung_tuyen"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
@@ -12,5 +12,5 @@ class Ung_tuyen(Base):
     date_apply = Column(Date, comment="ngày ứng tuyển")
     status = Column(TINYINT, comment="trạng thái 0: nhà tuyển dụng chưa đọc, 1: nhà tuyển dụng đã đọc, 2: từ chối, 3: chấp nhận")
 
-    recruitment = relationship("recruitments", back_populates="ung_tuyen")
+    recruitment = relationship("Recruitment", back_populates="ung_tuyen")
     student = relationship("Student", back_populates="ung_tuyen")

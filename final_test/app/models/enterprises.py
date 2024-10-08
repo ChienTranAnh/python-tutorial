@@ -19,4 +19,4 @@ class Enterprise(Base):
     scale = Column(Integer, nullable=True, comment='quy mô công ty')
     about = Column(String(255), nullable=True, comment='giới thiệu công ty')
 
-    recruitment = relationship("Recruitment", back_populates="enterprises")
+    recruitment = relationship("Recruitment", back_populates="enterprise")

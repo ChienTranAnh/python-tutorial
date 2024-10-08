@@ -11,8 +11,9 @@ class Recruitment(Base):
     candidate = Column(Date, comment="yêu cầu ứng viên")
     job_position = Column(String(100), comment="vị trí tuyển dụng")
     salary = Column(Float, nullable=True, comment='mức lương')
-    businesses_id = Column(Integer, ForeignKey('businesses.id'), comment="mã công ty")
-    start_date = Column(Date, comment='ngày đăgn tuyển')
+    company_id = Column(Integer, ForeignKey('enterprises.id'), comment="mã công ty")
+    start_date = Column(Date, comment='ngày đăng tuyển')
     end_date = Column(Date, nullable=True, comment='ngày hết hạn')
 
-    businesses = relationship("Enterprise", back_populates="recruitments")
+    ung_tuyen = relationship("Ungtuyen", back_populates="recruitment")
+    enterprise = relationship("Enterprise", back_populates="recruitment")

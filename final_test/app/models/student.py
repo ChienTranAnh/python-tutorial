@@ -18,5 +18,5 @@ class Student(Base):
     university_id = Column(Integer, ForeignKey('universities.id'), comment="mã trường đại học")
     skill = Column(String(255), nullable=True, comment="kỹ năng")
 
-    university = relationship("University", back_populates="students")
-    ungtuyen = relationship("Ungtuyen", back_populates="students")
+    ung_tuyen = relationship("Ungtuyen", back_populates="student")
+    university = relationship("University", back_populates="student")

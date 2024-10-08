@@ -12,4 +12,4 @@ class University(Base):
     email = Column(String(255), unique=True, comment="thư điện tử")
     website = Column(String(200), nullable=True, comment="trang web trường đại học")
 
-    students = relationship("Student", back_populates="university")
+    student = relationship("Student", back_populates="university")
