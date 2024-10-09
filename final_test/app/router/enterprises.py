@@ -1,8 +1,11 @@
+from typing import Union
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from . import get_db
 from ..crud import enterprises as crud_company
+from ..crud.student import search_students
+from ..crud.university import search_universities
 from ..schemas import enterprises as company_schema
 
 router = APIRouter()
@@ -55,6 +58,25 @@ def change_password(enterprise_id: int, old_pass: str, new_pass: str, db: Sessio
         raise HTTPException(status_code=400, detail='Change password don\'t success')
 
     raise HTTPException(status_code=200, detail='Change password success')
+
+# tìm kiếm sinh viên
+@router.get('/enterprises/students/search')
+def students_search(
+    skill: Union[str, None] = None,
+    major: Union[str, None] = None,
+    graduation_year: Union[int, None] = None,
+    db: Session = Depends(get_db)
+    ):
+    return search_students(db, skill, major, graduation_year)
+
+# tìm kiếm trường đại học
+@router.get('/enterprises/universities/search')
+def universities_search(
+    location: Union[str, None] = None,
+    major: Union[str, None] = None,
+    db: Session = Depends(get_db)
+    ):
+    return search_universities(db, location, major)
 
 """
 @router.get('/enterprises/{enterprise_id}', response_model=company_schema.EnterprisesResponse)
