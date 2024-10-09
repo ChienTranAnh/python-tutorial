@@ -20,7 +20,7 @@ def	create_student(db: Session, student: schemas.StudentCreate, university_id: i
         major=student.major,
         graduation_year=student.graduation_year,
         university_id=university_id,
-        skill=student.skill
+        skill=f"{student.skill}"
     )
     db.add(db_student)
     db.commit()

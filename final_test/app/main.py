@@ -16,8 +16,8 @@ app.include_router(users.router, prefix='/api', tags=['Users'])
 app.include_router(enterprises.router, prefix='/api', tags=['Enterprises'])
 app.include_router(employees.router, prefix='/api', tags=['Employees'])
 app.include_router(jobs.router, prefix='/api', tags=['Jobs'])
-app.include_router(students.router, prefix='/api', tags=['Students'])
 app.include_router(universities.router, prefix='/api', tags=['Universities'])
+app.include_router(students.router, prefix='/api', tags=['Students'])
 
 @app.get('/')
 def read_root():

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, Text
 from sqlalchemy.dialects.mysql import TINYINT
 from sqlalchemy.orm import relationship
 from ..db.database import Base
@@ -17,7 +17,7 @@ class Student(Base):
     major = Column(String(150), nullable=True, comment='nghành học')
     graduation_year = Column(Integer, comment='năm tốt nghiệp')
     university_id = Column(Integer, ForeignKey('universities.id'), comment="mã trường đại học")
-    skill = Column(String(255), nullable=True, comment="kỹ năng")
+    skill = Column(Text, nullable=True, comment="kỹ năng")
 
     ung_tuyen = relationship("Ungtuyen", back_populates="student")
     university = relationship("University", back_populates="student")
