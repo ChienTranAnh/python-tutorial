@@ -79,14 +79,3 @@ def universities_search(
     db: Session = Depends(get_db)
     ):
     return search_universities(db, location, major)
-
-"""
-@router.get('/enterprises/{enterprise_id}', response_model=company_schema.EnterprisesResponse)
-def enterprise_detail(enterprise_id: int, db: Session = Depends(get_db)):
-    # Lấy thông tin một daonh nghiệp theo ID
-    db_enterprise = crud_company.get_enterprise(db, company_id=company_id)
-    if db_enterprise is None:
-        raise HTTPException(status_code=404, detail='Company not found')
-
-    return db_enterprise
-"""

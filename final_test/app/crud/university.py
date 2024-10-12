@@ -32,16 +32,6 @@ def get_university(db: Session, university_id: int):
 def check_university(db: Session, email: EmailStr):
     return db.query(University).filter(University.email == email).first()
 
-# def delete_employee(db: Session, company_id: int, staff_id: int):
-#     staff = get_employee(db, company_id, staff_id)
-#     if staff is None:
-#         return
-
-#     db.delete(staff)
-#     db.commit()
-
-#     return True
-
 # tìm kiếm sinh viên
 def search_universities(db: Session, location: str, major: str):
     db_universities = db.query(University)

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 class JobCreate(BaseModel):
     job_title: str
@@ -8,7 +8,6 @@ class JobCreate(BaseModel):
     location: str
     salary_range: str
     job_type: str
-    enterprise_id: int
     employee_id: int
     start_date: str
     end_date: str

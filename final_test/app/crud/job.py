@@ -17,6 +17,7 @@ def	create_job(db: Session, job: schemas.JobCreate, company_id: int):
         salary_range=job.salary_range,
         job_type=job.job_type,
         enterprise_id=company_id,
+        employee_id=job.employee_id,
         start_date=format_date(job.start_date),
         end_date=format_date(job.end_date)
     )

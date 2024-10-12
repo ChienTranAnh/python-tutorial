@@ -28,11 +28,3 @@ def create_student(university_id: int, student: student_schemas.StudentCreate, d
         raise HTTPException(status_code=400, detail='Student already exists')
 
     return crud_student.create_student(db=db, student=student, university_id=university_id)
-
-# @router.delete('/universities/{university_id}/students/{employee_id}')
-# def employee_delete(university_id: int, employee_id: int, db: Session = Depends(get_db)):
-#     db_student = crud_student.delete_student(db, company_id=university_id, staff_id=employee_id)
-#     if db_student is None:
-#         raise HTTPException(status_code=404, detail='Employee not found')
-
-#     raise HTTPException(status_code=200, detail='Delete employee success!')

@@ -31,21 +31,8 @@ def	create_student(db: Session, student: schemas.StudentCreate, university_id: i
 
     return db_student
 
-# def get_employee(db: Session, company_id: int, staff_id: int):
-#     return db.query(Student).filter(Student.enterprise_id == company_id, Student.id == staff_id).first()
-
 def check_student(db: Session, email: EmailStr):
     return db.query(Student).filter(Student.email == email).first()
-
-# def delete_employee(db: Session, company_id: int, staff_id: int):
-#     staff = get_employee(db, company_id, staff_id)
-#     if staff is None:
-#         return
-
-#     db.delete(staff)
-#     db.commit()
-
-#     return True
 
 # tìm kiếm sinh viên
 def search_students(db: Session, skill: str, major: str, graduation_year: int):

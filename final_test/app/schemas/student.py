@@ -13,7 +13,6 @@ class StudentCreate(BaseModel):
     classes: str
     major: str
     graduation_year: int
-    university_id: int
     skill: List[str]
 
 class StudentResponse(BaseModel):

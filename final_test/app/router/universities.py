@@ -20,11 +20,3 @@ def create_university(university: university_schema.UniversityCreate, db: Sessio
         raise HTTPException(status_code=400, detail='University already exists')
 
     return crud_university.create_university(db=db, university=university)
-
-# @router.put('/universities/{enterprise_id}')
-# def update_enterprise(enterprise_id: int, enterprise: university_schema.UniversityCreate, db: Session = Depends(get_db)):
-#     detail_enterprise = crud_university.get_enterprise(db, company_id=enterprise_id)
-#     if detail_enterprise is None:
-#         raise HTTPException(status_code=404, detail='Company not found')
-    
-#     return crud_university.update_enterprise(db=db, company_detail=detail_enterprise, company=enterprise)
