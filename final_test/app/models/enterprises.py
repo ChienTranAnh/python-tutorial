@@ -18,3 +18,4 @@ class Enterprise(Base):
 
     recruitment = relationship("Recruitment", back_populates="enterprise")
     employee = relationship("Employee", back_populates="enterprise")
+    connective = relationship("Connective", back_populates="enterprise")

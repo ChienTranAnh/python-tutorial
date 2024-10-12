@@ -9,20 +9,21 @@ class StudentCreate(BaseModel):
     sex: int
     phone: str
     email: EmailStr
+    password: str
     classes: str
     major: str
     graduation_year: int
     university_id: int
     skill: List[str]
 
-class StudentResponse(StudentCreate):
+class StudentResponse(BaseModel):
     id: int
-    # first_name: str
-    # last_name: str
-    # birth: str
-    # sex: int
-    # phone: str
-    # email: EmailStr
+    first_name: str
+    last_name: str
+    birth: str
+    sex: int
+    phone: str
+    email: EmailStr
     skill: str
     name: str = ''
 
@@ -31,6 +32,17 @@ class StudentResponse(StudentCreate):
         if isinstance(value, date):
             return value.strftime('%d/%m/%Y')
         return value
+
+    @property
+    def sex_display(self) -> str:
+        if self.sex == 0:
+            sex = 'Female'
+        elif self.sex == 1:
+            sex = 'Male'
+        else:
+            sex = 'Other'
+
+        return sex
 
     class Config:
         orm_mode = True

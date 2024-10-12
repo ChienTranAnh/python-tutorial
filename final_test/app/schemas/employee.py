@@ -7,8 +7,8 @@ class StaffCreate(BaseModel):
     phone: str
     position: str
     email: EmailStr
+    password: str
     enterprise_id: int
-    user_id: int
 
 class StaffResponse(BaseModel):
     id: int

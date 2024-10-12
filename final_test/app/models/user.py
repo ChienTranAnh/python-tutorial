@@ -13,5 +13,3 @@ class User(Base):
     email = Column(String(255), unique=True, comment="thư điện tử")
     role = Column(Integer, nullable=True, comment="quyền tài khoản")
     acc_type = Column(Integer, nullable=True, comment="loại tài khoản")
-
-    employee = relationship("Employee", back_populates="user")

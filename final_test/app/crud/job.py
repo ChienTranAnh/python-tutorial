@@ -50,11 +50,11 @@ def update_job(db: Session, company_id: int, recruitment_id: int, recruitment: s
     return recruitment
 
 def delete_job(db: Session, company_id: int, recruitment_id: int):
-    recruitment = get_job(db, company_id, recruitment_id)
-    if recruitment is None:
+    db_recruitment = get_job(db=db, company_id=company_id, recruitment_id=recruitment_id)
+    if db_recruitment is None:
         return
 
-    db.delete(recruitment)
+    db.delete(db_recruitment)
     db.commit()
 
     return True

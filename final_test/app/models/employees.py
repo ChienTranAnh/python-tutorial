@@ -11,10 +11,10 @@ class Employee(Base):
     birth = Column(Date, comment="ngày tháng năm sinh")
     sex = Column(TINYINT(1), comment='giới tính')
     email = Column(String(255), unique=True, comment="thư điện tử")
+    password = Column(String(100), nullable=False, comment="mật khẩu")
     phone = Column(String(10), comment='điện thoại liên hệ')
     position = Column(String(20), comment='chức vụ')
-    enterprise_id = Column(Integer, ForeignKey('enterprises.id'), comment="mã doanh nghiệp")
-    user_id = Column(Integer, ForeignKey('users.id'), comment="mã tài khoản")
+    enterprise_id = Column(Integer, ForeignKey('enterprises.id'), nullable=False, comment="mã doanh nghiệp")
 
     enterprise = relationship("Enterprise", back_populates="employee")
-    user = relationship("User", back_populates="employee")
+    recruitment = relationship("Recruitment", back_populates="employee")

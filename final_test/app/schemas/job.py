@@ -9,6 +9,7 @@ class JobCreate(BaseModel):
     salary_range: str
     job_type: str
     enterprise_id: int
+    employee_id: int
     start_date: str
     end_date: str
 

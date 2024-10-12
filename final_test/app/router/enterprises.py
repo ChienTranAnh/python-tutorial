@@ -5,7 +5,9 @@ from sqlalchemy.orm import Session
 from . import get_db
 from ..crud import enterprises as crud_company
 from ..crud.student import search_students
+from ..schemas.student import StudentResponse
 from ..crud.university import search_universities
+from ..schemas.university import UniversityResponse
 from ..schemas import enterprises as company_schema
 
 router = APIRouter()
@@ -60,7 +62,7 @@ def change_password(enterprise_id: int, old_pass: str, new_pass: str, db: Sessio
     raise HTTPException(status_code=200, detail='Change password success')
 
 # tìm kiếm sinh viên
-@router.get('/enterprises/students/search')
+@router.get('/enterprises/students/search', response_model=list[StudentResponse])
 def students_search(
     skill: Union[str, None] = None,
     major: Union[str, None] = None,
@@ -70,7 +72,7 @@ def students_search(
     return search_students(db, skill, major, graduation_year)
 
 # tìm kiếm trường đại học
-@router.get('/enterprises/universities/search')
+@router.get('/enterprises/universities/search', response_model=list[UniversityResponse])
 def universities_search(
     location: Union[str, None] = None,
     major: Union[str, None] = None,

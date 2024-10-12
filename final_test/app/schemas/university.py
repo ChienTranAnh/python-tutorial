@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr
+from typing import List
 
 # tạo mới
 class UniversityCreate(BaseModel):
@@ -6,7 +7,9 @@ class UniversityCreate(BaseModel):
     address: str
     phone: str
     email: EmailStr
+    password: str
     website: str
+    major: List[str]
 
 # set thông tin trả về
 class UniversityResponse(BaseModel):
@@ -15,6 +18,7 @@ class UniversityResponse(BaseModel):
     phone: str
     email: EmailStr
     address: str
+    major: str
 
     class Config:
         orm_mode = True

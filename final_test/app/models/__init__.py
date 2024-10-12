@@ -1,4 +1,5 @@
 from ..db.database import Base
+from .connective import Connective
 from .employees import Employee
 from .enterprises import Enterprise
 from .recruitment import Recruitment

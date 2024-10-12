@@ -12,11 +12,12 @@ class Student(Base):
     birth = Column(Date, comment="ngày tháng năm sinh")
     sex = Column(TINYINT(1), comment='giới tính')
     email = Column(String(255), unique=True, comment="thư điện tử")
+    password = Column(String(100), comment="mật khẩu đăng nhập")
     phone = Column(String(10), comment='điện thoại liên hệ')
     classes = Column(String(150), nullable=True, comment='lớp')
     major = Column(String(150), nullable=True, comment='nghành học')
     graduation_year = Column(Integer, comment='năm tốt nghiệp')
-    university_id = Column(Integer, ForeignKey('universities.id'), comment="mã trường đại học")
+    university_id = Column(Integer, ForeignKey('universities.id'), nullable=False, comment="mã trường đại học")
     skill = Column(Text, nullable=True, comment="kỹ năng")
 
     ung_tuyen = relationship("Ungtuyen", back_populates="student")

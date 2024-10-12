@@ -1,8 +1,11 @@
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
+from . import crypt_pass
 from ..models import University
 from ..schemas import university as schemas
+
+crypt_pass = crypt_pass()
 
 def get_universities(db: Session, skip: int = 0, limit: int = 10):
     return db.query(University).offset(skip).limit(limit).all()
@@ -12,8 +15,10 @@ def	create_university(db: Session, university: schemas.UniversityCreate):
         uni_name=university.uni_name,
         address=university.address,
         email=university.email,
+        password=crypt_pass.hash(university.password),
         phone=university.phone,
-        website=university.website
+        website=university.website,
+        major=f"{university.major}"
     )
     db.add(db_university)
     db.commit()

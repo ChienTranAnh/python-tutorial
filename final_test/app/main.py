@@ -7,6 +7,7 @@ from .router import employees
 from .router import jobs
 from .router import students
 from .router import universities
+from .router import connectives
 
 app = FastAPI(title="Auto Career API", version='1.0.0')
 
@@ -18,6 +19,7 @@ app.include_router(employees.router, prefix='/api', tags=['Employees'])
 app.include_router(jobs.router, prefix='/api', tags=['Jobs'])
 app.include_router(universities.router, prefix='/api', tags=['Universities'])
 app.include_router(students.router, prefix='/api', tags=['Students'])
+app.include_router(connectives.router, prefix='/api', tags=['Universities Connect'])
 
 @app.get('/')
 def read_root():

@@ -13,9 +13,11 @@ class Recruitment(Base):
     location = Column(String(100), nullable=True, comment="nơi làm việc")
     salary_range = Column(String(50), nullable=True, comment='mức lương')
     job_type = Column(String(50), nullable=True, comment='loại hình công việc')
-    enterprise_id = Column(Integer, ForeignKey('enterprises.id'), comment="mã công ty")
+    enterprise_id = Column(Integer, ForeignKey('enterprises.id'), nullable=False, comment="mã công ty")
+    employee_id = Column(Integer, ForeignKey('employees.id'), nullable=False, comment="mã nhân viên đăng tin")
     start_date = Column(Date, comment='ngày đăng tuyển')
     end_date = Column(Date, nullable=True, comment='ngày hết hạn')
 
     ung_tuyen = relationship("Ungtuyen", back_populates="recruitment")
     enterprise = relationship("Enterprise", back_populates="recruitment")
+    employee = relationship("Employee", back_populates="recruitment")

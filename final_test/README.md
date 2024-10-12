@@ -1,7 +1,7 @@
 # FastAPI Auto Career
 
 ## Mô tả dự án
-Đây là một API đơn giản để quản lý thông tin người dùng sử dụng FastAPI và SQLite.
+Đây là một API đơn giản để quản lý thông tin người dùng sử dụng FastAPI và MySQL.
 
 ## Cấu trúc dự án
 project_name/
